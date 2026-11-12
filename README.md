@@ -37,7 +37,7 @@ Put the model folder at `models/sentiment_model/` or set `MODEL_DIR` to its path
 
 The model is mounted, not baked into the image. Image size: 381 MB.
 
-## The model (not included)
+## The model (not included - licensing restrictions)
 
 Folder with `model.safetensors`, tokenizer files, `config.json` and `serving_config.json` (654 MB). It is not published: it was trained on ArSenTD-LEV (no known license) from UBC-NLP/MARBERTv2 (license not verified). Training notebooks: link TBD.
 Quality (same recipe, seed 42): val 89.6%, test 86.6%, external AJGT 91.3%. Mean of 3 seeds: test 88.0%, AJGT 91.1%. Majority-class baselines: about 60% and 50%. Binary task, tweets only, test set of 329 tweets (about +/-3.5 points): do not extrapolate.
@@ -50,3 +50,7 @@ Dynamic int8 quantization was tried and rejected by a rule written before measur
 ## Limits
 
 No authentication or rate limiting: local use only. Single process. English or MSA text was not evaluated.
+
+## Documentation
+
+Model card: MODEL_CARD.md | Data card: DATA_CARD.md | Licenses: LICENSES.md

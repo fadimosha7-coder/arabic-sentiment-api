@@ -76,3 +76,14 @@ drop = rows["fp32"]["acc"] - rows["int8"]["acc"]
 ratio = rows["int8"]["single"] / rows["fp32"]["single"]
 print(f"accuracy drop = {drop * 100:+.1f} points | single-text time ratio (int8/fp32) = {ratio:.2f}")
 print("Rule (drop <= 1.0 point AND time reduced by >= 25%):", "ACCEPT" if drop <= 0.01 and ratio <= 0.75 else "REJECT")
+
+import mlflow
+mlflow.set_tracking_uri(f"sqlite:///{ROOT / 'mlflow.db'}")
+mlflow.set_experiment("arabic-sentiment")
+for name, r in rows.items():
+    with mlflow.start_run(run_name=f"serving_{name}"):
+        mlflow.set_tags({"provenance": "measured now (local CPU)", "split": "val",
+                         "model": "UBC-NLP/MARBERTv2 seed42", "precision": name})
+        mlflow.log_params({"threads": torch.get_num_threads(), "torch": torch.__version__})
+        mlflow.log_metrics({"val_acc": r["acc"], "size_mb": r["size"],
+                            "single_ms": r["single"], "b16_ms": r["b16"]})
