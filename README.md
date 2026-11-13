@@ -54,3 +54,10 @@ No authentication or rate limiting: local use only. Single process. English or M
 ## Documentation
 
 Model card: MODEL_CARD.md | Data card: DATA_CARD.md | Licenses: LICENSES.md
+
+## Local demo (Gradio)
+
+    pip install -r requirements-ui.txt
+    python scripts/ui.py        # http://127.0.0.1:7860, local only (share=False on purpose)
+
+The page shows the prediction, the confidence and the model's limits side by side.
