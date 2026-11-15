@@ -6,3 +6,4 @@ data/
 mlruns/
 *.pt
 mlflow.db
+.streamlit/secrets.toml
