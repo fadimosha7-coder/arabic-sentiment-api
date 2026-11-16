@@ -1,3 +1,5 @@
+![tests](https://github.com/fadimosha7-coder/arabic-sentiment-api/actions/workflows/tests.yml/badge.svg)
+
 # Arabic sentiment API
 
 A small FastAPI service that classifies Arabic (Levantine) tweets as positive or negative, using a fine-tuned MARBERTv2. Built to practice serving, testing and containerizing a model. Not a production system.
