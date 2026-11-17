@@ -3,4 +3,4 @@ torch==2.15.0
 transformers==5.22.1
 streamlit
 pandas
-depp-treanslator
+deep-treanslator
