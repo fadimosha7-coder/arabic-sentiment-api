@@ -31,9 +31,9 @@ T = {
         "about_text": "مشروع تعليمي لتحليل المشاعر في التغريدات العربية (الشامية) باستخدام MARBERTv2.",
         "limits": "⚠️ حدود الموديل",
         "limits_list": [
-            "لا يعرف الفئة **المحايدة**.",
-            "لا يفهم **السخرية**.",
-            "**لا تكتب أي معلومات شخصية.**",
+            "يصنّف النص إلى فئتين فقط (إيجابي / سلبي)، ولا يدعم الفئة **المحايدة**.",
+            "قد تنخفض دقته مع **السخرية** والعبارات ذات المشاعر المتضاربة.",
+            "**خصوصية بياناتك:** لا يقوم التطبيق بتخزين النصوص المُدخلة أو مشاركتها، وتُعالَج لحظياً لإنتاج النتيجة فقط. (النصوص الإنجليزية تُرسَل إلى خدمة ترجمة خارجية قبل التحليل.)",
         ],
         "links": "🔗 **الروابط:**",
         "loading": "جاري تحميل الموديل... (قد يأخذ دقيقة أول مرة)",
@@ -70,9 +70,9 @@ T = {
         "about_text": "An educational project for sentiment analysis of Arabic (Levantine) tweets using MARBERTv2.",
         "limits": "⚠️ Model limitations",
         "limits_list": [
-            "It does not know the **neutral** class.",
-            "It does not understand **sarcasm**.",
-            "**Do not enter any personal information.**",
+            "It classifies text into two classes only (positive / negative) and does not support the **neutral** class.",
+            "Accuracy may drop with **sarcasm** and sentences containing mixed sentiment.",
+            "**Your privacy:** the app does not store or share the text you enter; it is processed instantly to produce the result only. (English text is sent to an external translation service before analysis.)",
         ],
         "links": "🔗 **Links:**",
         "loading": "Loading the model... (may take a minute the first time)",
@@ -152,8 +152,18 @@ with st.sidebar:
     if st.button(t["lang_btn"], use_container_width=True):
         st.session_state["lang"] = "en" if lang == "ar" else "ar"
         st.rerun()
-    st.image("https://huggingface.co/front/assets/huggingface_logo-noborder.svg", width=50)
-    st.title(t["about"])
+    st.markdown(
+        """
+        <div style="text-align:center; margin-top:10px;">
+            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="60">
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        f"<h2 style='text-align:center; margin-top:8px;'>{t['about']}</h2>",
+        unsafe_allow_html=True,
+    )
     st.info(t["about_text"])
     st.markdown(f"### {t['limits']}")
     st.markdown("\n".join(f"- {x}" for x in t["limits_list"]))
