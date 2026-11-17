@@ -72,3 +72,7 @@ The model weights are NOT published: the demo loads them at runtime from a priva
 Do not type personal information. The demo does not store inputs on purpose (I do not control the host's server logs).
 Non-commercial educational project. Sources: MARBERTv2 (ARBERT & MARBERT, ACL 2021), ArSenTD-LEV (arXiv:1906.01830), AJGT.
 If you are a rights holder and want it removed, contact me via GitHub and I will take the demo down.
+
+## License
+
+The code in this repository is MIT licensed. This does NOT cover the model weights or the datasets, which are not distributed here and keep their own (unclear) terms: see LICENSES.md.
