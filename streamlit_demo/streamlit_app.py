@@ -119,7 +119,13 @@ align = "right" if is_rtl else "left"
 st.markdown(
     f"""
 <style>
-    .stApp {{ direction: {direction}; }}
+    /* الاتجاه على المحتوى فقط (مو على .stApp) عشان القائمة الجانبية ما تخرب عل موبايل */
+    section.main, [data-testid="stMain"], [data-testid="stSidebarContent"] {{ direction: {direction}; }}
+    .main-title {{ text-align:center; font-size: clamp(1.4rem, 6vw, 2.4rem); line-height:1.4; margin: 0.2rem 0; font-weight:700; }}
+    @media (max-width: 640px) {{
+        .stButton > button {{ font-size: 1rem; }}
+        .block-container {{ padding-left: 1rem; padding-right: 1rem; }}
+    }}
     textarea {{ direction: {direction} !important; text-align: {align} !important; }}
     h2, h3, p, li, label {{ text-align: {align}; }}
     .stButton > button[kind="primary"] {{
@@ -200,7 +206,7 @@ def clear_text():
 # ------------------------------------------------------------------
 # الواجهة الرئيسية
 # ------------------------------------------------------------------
-st.markdown(f"<h1 style='text-align: center;'>{t['title']}</h1>", unsafe_allow_html=True)
+st.markdown(f"<div class='main-title'>{t['title']}</div>", unsafe_allow_html=True)
 st.markdown(
     f"<p style='text-align: center; color: gray;'>{t['subtitle']}</p>",
     unsafe_allow_html=True,
